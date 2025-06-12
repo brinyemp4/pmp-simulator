@@ -16,10 +16,11 @@ export default function Home() {
             <span className="text-blue-600 font-medium">Experience the real exam environment with 180 questions and a 240-minute timer.</span>
           </p>
           <Link 
-            href="/exam"
-            className="btn btn-primary text-lg px-10 py-4 mb-8 shadow-lg hover:scale-105 focus-visible:ring-4 focus-visible:ring-blue-300"
+            href="/exam"            
           >
+            <button className="text-lg px-10 py-4 mb-8 shadow-lg hover:scale-105 focus-visible:ring-4 focus-visible:ring-blue-300">
             Start Practice Exam
+            </button>
           </Link>
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="card border-t-4 border-blue-500">
