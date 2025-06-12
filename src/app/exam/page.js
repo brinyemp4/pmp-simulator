@@ -43,7 +43,7 @@ export default function ExamPage() {
   const handleAnswer = (answer) => {
     setAnswers(prev => ({
       ...prev,
-      [currentQuestion]: answer
+      [examQuestions[currentQuestion].id]: answer
     }));
   };
 
@@ -139,7 +139,7 @@ export default function ExamPage() {
             </div>
 
             {/* Navigation Buttons */}
-            <div className="mt-6 flex justify-between">
+            <div className="mt-6 flex justify-between items-center">
               <button
                 onClick={() => setCurrentQuestion(prev => Math.max(0, prev - 1))}
                 disabled={currentQuestion === 0}
@@ -147,13 +147,21 @@ export default function ExamPage() {
               >
                 Previous
               </button>
-              <button
-                onClick={() => setCurrentQuestion(prev => Math.min(examQuestions.length - 1, prev + 1))}
-                disabled={currentQuestion === examQuestions.length - 1}
-                className="px-6 py-2 bg-blue-600 text-white rounded-lg disabled:opacity-50"
-              >
-                Next
-              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setCurrentQuestion(prev => Math.min(examQuestions.length - 1, prev + 1))}
+                  disabled={currentQuestion === examQuestions.length - 1}
+                  className="px-6 py-2 bg-blue-600 text-white rounded-lg disabled:opacity-50"
+                >
+                  Next
+                </button>
+                <button
+                  onClick={() => router.push('/results')}
+                  className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                >
+                  Finish Exam
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -186,4 +194,4 @@ export default function ExamPage() {
       )}
     </div>
   );
-} 
+}

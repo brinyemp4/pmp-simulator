@@ -9,6 +9,8 @@ export const formatTime = (seconds) => {
 export const validateAnswer = (question, userAnswer) => {
   switch (question.type) {
     case 'multiple-choice':
+    case 'formula':
+    case 'scenario':
       return userAnswer === question.correctAnswer;
     
     case 'multiple-response':
@@ -47,19 +49,17 @@ export const calculatePerformance = (answers, questions) => {
   const domainScores = {};
 
   Object.entries(answers).forEach(([questionId, answer]) => {
-    const question = questions.find(q => q.id === parseInt(questionId));
+    // Consider indexing from 0 for questionId
+    const question = questions.find(q => q.id === Number(questionId));
     if (question) {
       total++;
-      if (validateAnswer(question, answer)) {
-        correct++;
-        // Track domain scores
-        if (!domainScores[question.domain]) {
-          domainScores[question.domain] = { correct: 0, total: 0 };
-        }
-        domainScores[question.domain].correct++;
-      }
+      // Initialize domain entry once per question
       if (!domainScores[question.domain]) {
         domainScores[question.domain] = { correct: 0, total: 0 };
+      }
+      if (validateAnswer(question, answer)) {
+        correct++;
+        domainScores[question.domain].correct++;
       }
       domainScores[question.domain].total++;
     }
@@ -105,4 +105,4 @@ export const clearExamState = () => {
   } catch (error) {
     console.error('Error clearing exam state:', error);
   }
-}; 
+};
