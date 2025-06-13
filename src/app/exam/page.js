@@ -121,6 +121,7 @@ export default function ExamPage() {
           {/* Question Navigation */}
           <div className="lg:col-span-1">
             <QuestionNavigation
+              questionNavigationIndex={examQuestions.map(q => q.id)}
               totalQuestions={examQuestions.length}
               currentQuestion={currentQuestion}
               answers={answers}

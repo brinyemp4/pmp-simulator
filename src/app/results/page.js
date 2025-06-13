@@ -15,10 +15,8 @@ export default function ResultsPage() {
   const totalQuestions = examState?.questions?.length || questions.length;
 
   // Calculate performance
-  console.log('Performance calculation started with answers:', answers);
   const performance = calculatePerformance(answers, examState?.questions || questions);
-  console.log('Performance:', performance);
-
+  
   // Progress
   const answeredQuestions = Object.keys(answers).length;
   const skippedQuestions = totalQuestions - answeredQuestions;

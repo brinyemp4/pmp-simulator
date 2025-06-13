@@ -5,11 +5,13 @@ export default function QuestionNavigation({
   currentQuestion,
   answers,
   onQuestionSelect,
-}) {
+  questionNavigationIndex,
+}) {  
   const renderQuestionButtons = () => {
     const buttons = [];
     for (let i = 0; i < totalQuestions; i++) {
-      const isAnswered = answers[i] !== undefined;
+      // Changed navigation logic according to questionNavigationIndex
+      const isAnswered = Object.prototype.hasOwnProperty.call(answers, questionNavigationIndex[i]);
       const isCurrent = i === currentQuestion;
 
       buttons.push(
