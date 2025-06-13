@@ -1,12 +1,10 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { loadExamState, calculatePerformance, formatTime } from '@/lib/examUtils';
 import { questions } from '@/data/questions';
 
 export default function ResultsPage() {
-  const router = useRouter();
 
   // Load answers and time from localStorage (exam state)
   const examState = typeof window !== 'undefined' ? loadExamState() : null;

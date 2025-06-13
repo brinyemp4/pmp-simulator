@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import QuestionDisplay from '@/components/QuestionDisplay';
 import ExamTimer from '@/components/ExamTimer';
 import QuestionNavigation from '@/components/QuestionNavigation';
-import { questions, getRandomQuestions } from '@/data/questions';
+import { getRandomQuestions } from '@/data/questions';
 import { saveExamState, loadExamState, clearExamState } from '@/lib/examUtils';
 
 export default function ExamPage() {
